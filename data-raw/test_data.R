@@ -2,6 +2,8 @@
 
 library(jsonlite)
 
+devtools::load_all()
+
 df <- head(iris)
 js <- jsonlite::toJSON(list(data = as.list(df)), pretty = TRUE)
 

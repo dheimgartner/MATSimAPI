@@ -1,4 +1,4 @@
-MTO_MODELS := ../mtomodels/data/MATSimAPI.rda
+MTO_MODELS := ../mtomodel/data/MATSimAPI.rda
 
 
 .PHONY: build, unbuild, update_mto_models
