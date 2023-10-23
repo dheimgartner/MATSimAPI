@@ -8,3 +8,16 @@ function(msg="") {
   out <- echo(msg = msg)
   out
 }
+
+#* Pass data in and out
+#* @post /test/data
+#* @param data:data.frame Data to pass in and out
+#* @param debug:bool
+function(data, debug = FALSE) {
+  if (debug) {
+    browser()
+  }
+  df <- as.data.frame(data)
+  df[1, ]
+  return(df)
+}
