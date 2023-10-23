@@ -6,6 +6,7 @@
 
 
 #* Echo back the input
+#* @tag Test
 #* @param msg The message to echo
 #* @get /echo
 function(msg="") {
@@ -17,6 +18,7 @@ function(msg="") {
 
 
 #* DCM for GA ownership
+#* @tag "MTO predictors"
 #* @post /predict/ga
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/ga`)
@@ -39,6 +41,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for GA model
+#* @tag "MTO variables"
 #* @get /vars/ga
 #* @serializer json
 function() {
@@ -56,6 +59,7 @@ function() {
 
 
 #* DCM for car ownership
+#* @tag "MTO predictors"
 #* @post /predict/ca
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/ca`)
@@ -78,6 +82,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for car model
+#* @tag "MTO variables"
 #* @get /vars/ca
 #* @serializer json
 function() {
@@ -95,6 +100,7 @@ function() {
 
 
 #* DCM for regional subscription ownership
+#* @tag "MTO predictors"
 #* @post /predict/re
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/re`)
@@ -117,6 +123,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for regional subscription model
+#* @tag "MTO variables"
 #* @get /vars/re
 #* @serializer json
 function() {
@@ -134,6 +141,7 @@ function() {
 
 
 #* DCM for half-fare card ownership
+#* @tag "MTO predictors"
 #* @post /predict/ht
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/ht`)
@@ -156,6 +164,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for half-fare card model
+#* @tag "MTO variables"
 #* @get /vars/ht
 #* @serializer json
 function() {
@@ -173,6 +182,7 @@ function() {
 
 
 #* DCM for car-sharing subscription ownership
+#* @tag "MTO predictors"
 #* @post /predict/cs
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/cs`)
@@ -195,6 +205,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for car-sharing model
+#* @tag "MTO variables"
 #* @get /vars/cs
 #* @serializer json
 function() {
@@ -212,6 +223,7 @@ function() {
 
 
 #* DCM for bicycle ownership
+#* @tag "MTO predictors"
 #* @post /predict/bi
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/bi`)
@@ -234,6 +246,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
 }
 
 #* Required variables for bicycle model
+#* @tag "MTO variables"
 #* @get /vars/bi
 #* @serializer json
 function() {
@@ -247,4 +260,44 @@ function() {
   out
 }
 
+
+
+
+#* DCM for home office model (both selection and frequency component)
+#* @tag "WFH predictor"
+#* @post /predict/wfh
+#* @serializer json
+#* @param data:data.frame Data to predict on (required vars: `/vars/wfh`)
+#* @param fix:dbl Fix one or more coefficients
+#* @param cc:dbl Calibration constant
+#* @param debug:bool
+function(data, fix = NULL, cc = NULL, debug = FALSE) {
+  if (debug) {
+    browser()
+  }
+  data <- as.data.frame(data)
+  out <- wfh_predictor(
+    data = data,
+    apollo_list = MATSimAPI::wfhmodels$heckman,
+    fix = fix,
+    cc = cc,
+    return_vars = FALSE
+  )
+  out
+}
+
+#* Required variables for home office model
+#* @tag "WFH variables"
+#* @get /vars/wfh
+#* @serializer json
+function() {
+  out <- wfh_predictor(
+    data = NULL,
+    apollo_list = MATSimAPI::wfhmodels$heckman,
+    fix = NULL,
+    cc = NULL,
+    return_vars = TRUE
+  )
+  out
+}
 

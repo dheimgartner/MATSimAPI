@@ -15,18 +15,28 @@ test_data_from_model <- function(model) {
   return(out)
 }
 
+# Dummy
 df <- head(iris)
 js <- jsonlite::toJSON(list(data = as.list(df)), pretty = TRUE)
 
-test_data <- list()
-test_data$dummy <- df
-test_data$dummy_json <- js
+dummy <- list()
+dummy$df <- df
+dummy$json <- js
 
+test_data <- list()
+test_data$dummy <- dummy
+
+# MTO
 td_mto <-
   purrr::map(MATSimAPI::mtomodels, function(x) {
     test_data_from_model(x)
   })
 
 test_data <- append(test_data, td_mto)
+
+# WFH
+td_wfh <- list(wfh = test_data_from_model(MATSimAPI::wfhmodels$heckman))
+
+test_data <- append(test_data, td_wfh)
 
 usethis::use_data(test_data, overwrite = TRUE)

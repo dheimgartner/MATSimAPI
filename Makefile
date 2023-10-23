@@ -1,5 +1,5 @@
 MTO_MODELS := ../mtomodel/data/MATSimAPI.rda
-WFH_MODLES := ../wfhmodel/data/MATSimAPI.rda
+WFH_MODELS := ../wfhmodel/data/MATSimAPI.rda
 
 
 .PHONY: build unbuild update_mto_models update_wfh_models

@@ -51,6 +51,7 @@ base_predictor <- function(data, model, excl, fix = NULL, cc = NULL, return_vars
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
@@ -70,6 +71,7 @@ ga_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
@@ -89,6 +91,7 @@ ca_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
@@ -108,6 +111,7 @@ re_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
@@ -127,6 +131,7 @@ ht_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
@@ -146,6 +151,7 @@ cs_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)
+#' @param return_vars Boolean. If `TRUE` returns vars as required by `data`
 #'
 #' @return `data.frame` with probability vectors
 #'
