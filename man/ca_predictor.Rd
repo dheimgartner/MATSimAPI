@@ -21,3 +21,6 @@ ca_predictor(data, model, fix = NULL, cc = NULL, return_vars = FALSE)
 \description{
 Car predictor
 }
+\seealso{
+\code{\link[=base_predictor]{base_predictor()}}
+}

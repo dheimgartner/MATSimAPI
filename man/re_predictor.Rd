@@ -21,3 +21,6 @@ re_predictor(data, model, fix = NULL, cc = NULL, return_vars = FALSE)
 \description{
 Regional PT-subscription predictor
 }
+\seealso{
+\code{\link[=base_predictor]{base_predictor()}}
+}
