@@ -4,6 +4,17 @@ library(jsonlite)
 
 devtools::load_all()
 
+rm(list = ls())
+
+test_data_from_model <- function(model) {
+  out <- list()
+  df <- model$apollo_inputs$database
+  js <- jsonlite::toJSON(list(data = as.list(df)), pretty = TRUE)
+  out$df <- df
+  out$json <- js
+  return(out)
+}
+
 df <- head(iris)
 js <- jsonlite::toJSON(list(data = as.list(df)), pretty = TRUE)
 
@@ -11,11 +22,11 @@ test_data <- list()
 test_data$dummy <- df
 test_data$dummy_json <- js
 
-ga <- MATSimAPI::MATSimAPI$ga
-ga <- ga$apollo_inputs$database
-ga_json <- jsonlite::toJSON(list(data = as.list(ga)), pretty = TRUE)
+td_mto <-
+  purrr::map(MATSimAPI::mtomodels, function(x) {
+    test_data_from_model(x)
+  })
 
-test_data$ga <- ga
-test_data$ga_json <- ga_json
+test_data <- append(test_data, td_mto)
 
 usethis::use_data(test_data, overwrite = TRUE)
