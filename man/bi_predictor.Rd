@@ -14,6 +14,8 @@ bi_predictor(data, model, fix = NULL, cc = NULL, return_vars = FALSE)
 \item{fix}{Named vector. Fix coefficients to certain values}
 
 \item{cc}{Calibration constant (cutoff parameter)}
+
+\item{return_vars}{Boolean. If \code{TRUE} returns vars as required by \code{data}}
 }
 \value{
 \code{data.frame} with probability vectors

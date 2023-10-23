@@ -1,5 +1,6 @@
 #* @apiTitle Plumber MATSim DCM predictor API
-#* @apiDescription Returns probability vectors for home office choice and frequency as well as mobility tool ownership.
+#* @apiDescription Probability vectors for heckman-type home office model (selection and frequency)
+#* as well as mobility tool ownership models and some other endpoints.
 #* @apiContact Daniel Heimgartner `daniel.heimgartner@ivt.baug.ethz.ch`
 
 
@@ -264,7 +265,7 @@ function() {
 
 
 #* DCM for home office model (both selection and frequency component)
-#* @tag "WFH predictor"
+#* @tag "WFH predictors"
 #* @post /predict/wfh
 #* @serializer json
 #* @param data:data.frame Data to predict on (required vars: `/vars/wfh`)
@@ -297,6 +298,27 @@ function() {
     fix = NULL,
     cc = NULL,
     return_vars = TRUE
+  )
+  out
+}
+
+
+
+
+#* Home office distribution over weekdays
+#* @tag "WFH predictors"
+#* @get /predict/weekdays
+#* @param wfh:int WFH frequency
+#* @param weekday:str In English and lowercase (optional)
+#* @param emp:str One of `c("full_time", "mult_part_time", "part_time")`
+function(wfh, weekday = NULL, emp, debug = FALSE) {
+  if (debug) {
+    browser()
+  }
+  out <- weekday_dist(
+    wfh = wfh,
+    weekday = weekday,
+    emp = emp
   )
   out
 }
