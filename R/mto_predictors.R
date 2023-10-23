@@ -140,9 +140,9 @@ cs_predictor <- function(data, model, fix = NULL, cc = NULL, return_vars = FALSE
 
 
 
-#' Car-sharing predictor
+#' Bicycle predictor
 #'
-#' @param data `data.frame` with data to predict probability of having a car-sharing subscription
+#' @param data `data.frame` with data to predict probability of owning a bicycle
 #' @param model Apollo model
 #' @param fix Named vector. Fix coefficients to certain values
 #' @param cc Calibration constant (cutoff parameter)

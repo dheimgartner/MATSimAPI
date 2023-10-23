@@ -21,3 +21,16 @@ function(data, debug = FALSE) {
   df[1, ]
   return(df)
 }
+
+
+#* What about `NULL` values?
+#* @get /null
+#* @param x:str
+#* @param y:str
+function(x = NULL, y = "not null", debug = FALSE) {
+  if (debug) {
+    browser()
+  }
+
+  return (list(x = x, y = y))
+}
