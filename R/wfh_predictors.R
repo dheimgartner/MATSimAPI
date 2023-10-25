@@ -25,6 +25,7 @@ wfh_predictor <- function(data, apollo_list, fix = NULL, cc = NULL, return_vars 
   # Unpack for apollo_validateInputs
   apollo_fixed <- apollo_inputs$apollo_fixed
   apollo_control <- apollo_inputs$apollo_control
+  apollo_control$outputDirectory <- NULL  # otherwise writes to inst...
   apollo_draws <- apollo_inputs$apollo_draws
   apollo_randCoeff <- apollo_inputs$apollo_randCoeff
 
