@@ -18,6 +18,22 @@ function(msg="") {
 
 
 
+#* Get variable descriptions
+#* @tag Documentation
+#* @get /doc
+#* @param model One of `c("all", "ga", "ca", "ht", "re", "cs", "bi", "wfh")`
+#* @param vars vars Select variables of interest. Only pass if `model = "all"`
+#* @param debug:bool
+function(model = "all", vars = NULL, debug = FALSE) {
+  if (debug) {
+    browser()
+  }
+  out <- variable_description(model = model, vars = vars)
+  out
+}
+
+
+
 #* DCM for GA ownership
 #* @tag "MTO predictors"
 #* @post /predict/ga
