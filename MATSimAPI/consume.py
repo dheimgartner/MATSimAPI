@@ -18,7 +18,6 @@ class RApiConsumer:
                     f"library({self.r_package_name}); run(port={self.port})",
                 ]
             )
-            print("R API started in the background.")
 
             # Store the process object for later use or termination
             self.api_process = process
@@ -29,14 +28,12 @@ class RApiConsumer:
         if self.api_process:
             self.api_process.terminate()
             self.api_process.wait()
-            print("R API stopped.")
             
     def wait_for_api(self, max_retries=10, retry_interval=2):
         for _ in range(max_retries):
             try:
                 response = requests.get(f"http://localhost:{self.port}/echo?msg=wait_for_api") # without /echo 404 is returned -> echo to check connection
                 if response.status_code == 200:
-                    print("R API is up and running.")
                     return
             except requests.exceptions.RequestException:
                 time.sleep(retry_interval)
