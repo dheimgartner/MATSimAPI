@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+
+data-raw/mtodata_full.rda
+data-raw/wfhdata_full.rda
+
+_build/*
