@@ -45,7 +45,7 @@ def run() -> None:
         api.start_api()
         api.wait_for_api()
     elif a.cmd == "stop":
-        api._stop_api_by_port(port=a.port)
+        api.stop_api_by_port(port=a.port)
     else:
         p.print_help()
 

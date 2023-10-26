@@ -31,7 +31,7 @@ class RApiConsumer:
             self.api_process.wait()
 
     @classmethod
-    def _stop_api_by_port(cls, port):
+    def stop_api_by_port(cls, port):
         for proc in psutil.process_iter(attrs=["pid", "name", "connections"]):
             try:
                 if proc.info.get("connections") is not None:
