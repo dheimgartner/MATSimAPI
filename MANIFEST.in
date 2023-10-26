@@ -1,1 +1,2 @@
 recursive-include MATSimAPI/Rapi *
+include MATSimAPI/data/*

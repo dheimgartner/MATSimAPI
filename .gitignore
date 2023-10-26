@@ -236,3 +236,4 @@ fabric.properties
 # me
 env/*
 _build/*
+.Rproj.user
