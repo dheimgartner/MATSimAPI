@@ -19,7 +19,6 @@ def install_r_package(pkg_path="Rapi"):
             ],
             check=True,
         )
-        print(f"R package '{r_package_path}' installed successfully.")
     except subprocess.CalledProcessError as e:
         print(
             f"Error installing the R package (do you have `devtools` installed?): {e}"

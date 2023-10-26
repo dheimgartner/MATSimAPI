@@ -5,14 +5,13 @@ setup(
     version='0.0.1',
     install_requires=[
       "requests",
+      "psutil",
     ],
     packages=find_packages('.', exclude=['tests']),
     include_package_data=True,
-    scripts=['bin/MATSimAPI'],
     entry_points={
       'console_scripts': [
-         'install_Rapi = MATSimAPI.install:install_r_package',
-         'uninstall_Rapi = MATSimAPI.install:uninstall_r_package' 
-      ] ,
+        'MATSimAPI = MATSimAPI.entry_point:run'
+      ],
     },
 )
