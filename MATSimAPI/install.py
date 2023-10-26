@@ -2,13 +2,13 @@ import subprocess
 import os
 
 
-def get_r_package_dir(pkg_path):
+def get_r_package_dir(pkg_path: str) -> str:
     python_script_dir = os.path.dirname(os.path.abspath(__file__))
     r_package_path = os.path.join(python_script_dir, pkg_path)
     return r_package_path
 
 
-def install_r_package(pkg_path="Rapi"):
+def install_r_package(pkg_path: str = "Rapi") -> None:
     r_package_path = get_r_package_dir(pkg_path)
     try:
         subprocess.run(
@@ -25,7 +25,7 @@ def install_r_package(pkg_path="Rapi"):
         )
 
 
-def uninstall_r_package(pkg="MATSimAPI"):
+def uninstall_r_package(pkg: str = "MATSimAPI") -> None:
     try:
         subprocess.run(["Rscript", "-e", f"remove.packages('{pkg}')"], check=True)
         print(f"Package {pkg} removed successfully.")

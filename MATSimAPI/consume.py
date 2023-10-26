@@ -1,3 +1,7 @@
+"""
+Could be improved with custom exceptions (?)
+"""
+
 import subprocess
 import requests
 import time
@@ -5,11 +9,17 @@ import psutil
 
 
 class RApiConsumer:
-    def __init__(self, r_package_name="MATSimAPI", port=8000):
+    """
+    Handler for R plumber API.
+
+    Starts the API as a background process on a specified port (defaults to 8000)
+    """
+    def __init__(self, r_package_name: str = "MATSimAPI", port: int = 8000) -> None:
+        self.api_process = None
         self.r_package_name = r_package_name
         self.port = port
 
-    def start_api(self):
+    def start_api(self) -> None:
         try:
             # Run the R script as a background process
             process = subprocess.Popen(
@@ -25,26 +35,33 @@ class RApiConsumer:
         except Exception as e:
             print(f"Error starting the R API: {e}")
 
-    def stop_api(self):
+    def stop_api(self) -> None:
         if self.api_process:
             self.api_process.terminate()
             self.api_process.wait()
 
     @classmethod
-    def stop_api_by_port(cls, port):
+    def stop_api_by_port(cls, port: int) -> None:
+        """
+        If the full API process is not handled by one RApiConsumer instance,
+        we have to be able to kill the process by specifying the port.
+
+        This function searches for R processes on the specified port and
+        kills them.
+        """
         for proc in psutil.process_iter(attrs=["pid", "name", "connections"]):
             try:
                 if proc.info.get("connections") is not None:
                     for conn in proc.info["connections"]:
                         if conn.laddr.port == port and proc.info["name"] == "R":
-                            print(
-                                f"Found process {proc.info['name']} with PID {proc.info['pid']} using port {port}. Terminating..."
-                            )
                             psutil.Process(proc.info["pid"]).terminate()
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 pass
 
-    def wait_for_api(self, max_retries=10, retry_interval=2):
+    def wait_for_api(self, max_retries: int = 10, retry_interval: int =2) -> None:
+        """
+        Before we can interact with the API, make sure it is up and running!
+        """
         for _ in range(max_retries):
             try:
                 response = requests.get(
