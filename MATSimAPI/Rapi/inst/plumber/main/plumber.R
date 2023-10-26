@@ -1,6 +1,5 @@
 #* @apiTitle Plumber MATSim DCM predictor API
-#* @apiDescription Probability vectors for heckman-type home office model (selection and frequency)
-#* as well as mobility tool ownership models and some other endpoints.
+#* @apiDescription Probability vectors for heckman-type home office model (selection and frequency) as well as mobility tool ownership models and some other endpoints.
 #* @apiContact Daniel Heimgartner `daniel.heimgartner@ivt.baug.ethz.ch`
 
 
