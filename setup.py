@@ -4,6 +4,7 @@ setup(
     name='MATSimAPI',
     version='0.0.1',
     install_requires=[
+      "pandas",
       "requests",
       "psutil",
     ],
