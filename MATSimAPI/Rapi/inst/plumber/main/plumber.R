@@ -2,19 +2,22 @@
 #* @apiDescription Probability vectors for heckman-type home office model (selection and frequency) as well as mobility tool ownership models and some other endpoints.
 #* @apiContact Daniel Heimgartner `daniel.heimgartner@ivt.baug.ethz.ch`
 
-
+null_this <- function(this) {
+  if (this == "") {
+    return(NULL)
+  }
+  return(this)
+}
 
 
 #* Echo back the input
 #* @tag Test
 #* @param msg The message to echo
 #* @get /echo
-function(msg="") {
+function(msg = "") {
   out <- echo(msg = msg)
   out
 }
-
-
 
 
 #* Get variable descriptions
@@ -23,14 +26,14 @@ function(msg="") {
 #* @param model One of `c("all", "ga", "ca", "ht", "re", "cs", "bi", "wfh")`
 #* @param vars vars Select variables of interest. Only pass if `model = "all"`
 #* @param debug:bool
-function(model = "all", vars = NULL, debug = FALSE) {
+function(model = "all", vars = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  vars <- null_this(vars)
   out <- variable_description(model = model, vars = vars)
   out
 }
-
 
 
 #* DCM for GA ownership
@@ -41,10 +44,12 @@ function(model = "all", vars = NULL, debug = FALSE) {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- ga_predictor(
     data = data,
@@ -55,6 +60,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for GA model
 #* @tag "MTO variables"
@@ -72,8 +78,6 @@ function() {
 }
 
 
-
-
 #* DCM for car ownership
 #* @tag "MTO predictors"
 #* @post /predict/ca
@@ -82,10 +86,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- ca_predictor(
     data = data,
@@ -96,6 +102,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for car model
 #* @tag "MTO variables"
@@ -113,8 +120,6 @@ function() {
 }
 
 
-
-
 #* DCM for regional subscription ownership
 #* @tag "MTO predictors"
 #* @post /predict/re
@@ -123,10 +128,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- re_predictor(
     data = data,
@@ -137,6 +144,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for regional subscription model
 #* @tag "MTO variables"
@@ -154,8 +162,6 @@ function() {
 }
 
 
-
-
 #* DCM for half-fare card ownership
 #* @tag "MTO predictors"
 #* @post /predict/ht
@@ -164,10 +170,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- ht_predictor(
     data = data,
@@ -178,6 +186,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for half-fare card model
 #* @tag "MTO variables"
@@ -195,8 +204,6 @@ function() {
 }
 
 
-
-
 #* DCM for car-sharing subscription ownership
 #* @tag "MTO predictors"
 #* @post /predict/cs
@@ -205,10 +212,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- cs_predictor(
     data = data,
@@ -219,6 +228,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for car-sharing model
 #* @tag "MTO variables"
@@ -236,8 +246,6 @@ function() {
 }
 
 
-
-
 #* DCM for bicycle ownership
 #* @tag "MTO predictors"
 #* @post /predict/bi
@@ -246,10 +254,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- bi_predictor(
     data = data,
@@ -260,6 +270,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for bicycle model
 #* @tag "MTO variables"
@@ -277,8 +288,6 @@ function() {
 }
 
 
-
-
 #* DCM for home office model (both selection and frequency component)
 #* @tag "WFH predictors"
 #* @post /predict/wfh
@@ -287,10 +296,12 @@ function() {
 #* @param fix:dbl Fix one or more coefficients
 #* @param cc:dbl Calibration constant
 #* @param debug:bool
-function(data, fix = NULL, cc = NULL, debug = FALSE) {
+function(data, fix = "", cc = "", debug = FALSE) {
   if (debug) {
     browser()
   }
+  fix <- null_this(fix)
+  cc <- null_this(cc)
   data <- as.data.frame(data)
   out <- wfh_predictor(
     data = data,
@@ -301,6 +312,7 @@ function(data, fix = NULL, cc = NULL, debug = FALSE) {
   )
   out
 }
+
 
 #* Required variables for home office model
 #* @tag "WFH variables"
@@ -318,18 +330,17 @@ function() {
 }
 
 
-
-
 #* Home office distribution over weekdays
 #* @tag "WFH predictors"
 #* @get /predict/weekdays
 #* @param wfh:int WFH frequency
 #* @param weekday:str In English and lowercase (optional)
 #* @param emp:str One of `c("full_time", "mult_part_time", "part_time")`
-function(wfh, weekday = NULL, emp, debug = FALSE) {
+function(wfh, weekday = "", emp, debug = FALSE) {
   if (debug) {
     browser()
   }
+  weekday <- null_this(weekday)
   out <- weekday_dist(
     wfh = wfh,
     weekday = weekday,

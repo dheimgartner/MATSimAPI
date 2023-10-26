@@ -27,7 +27,7 @@ base_predictor <- function(data, model, excl, fix = NULL, cc = NULL, return_vars
   v <- vars_from_beta(est)
 
   if (return_vars) {
-    return(v)
+    return(sort(v))
   }
 
   db <-

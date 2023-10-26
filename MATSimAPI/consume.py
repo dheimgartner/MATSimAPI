@@ -6,6 +6,7 @@ import subprocess
 import requests
 import time
 import psutil
+import os
 
 
 class RApiConsumer:
@@ -19,16 +20,20 @@ class RApiConsumer:
         self.r_package_name = r_package_name
         self.port = port
 
-    def start_api(self) -> None:
+    def start_api(self, silence: bool = True) -> None:
         try:
             # Run the R script as a background process
-            process = subprocess.Popen(
-                [
-                    "Rscript",
-                    "-e",
-                    f"library({self.r_package_name}); run(port={self.port})",
-                ]
-            )
+            with open(os.devnull, 'w') as devnull:
+                std_ = devnull if silence is True else None
+                process = subprocess.Popen(
+                    [
+                        "Rscript",
+                        "-e",
+                        f"library({self.r_package_name}); run(port={self.port})",
+                    ],
+                    stdout=std_,
+                    stderr=std_
+                )
 
             # Store the process object for later use or termination
             self.api_process = process

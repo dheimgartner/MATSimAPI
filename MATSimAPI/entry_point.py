@@ -42,7 +42,7 @@ def run() -> None:
     elif a.cmd == "uninstall":
         install.uninstall_r_package()
     elif a.cmd == "start":
-        api.start_api()
+        api.start_api(silence=False)
         api.wait_for_api()
     elif a.cmd == "stop":
         api.stop_api_by_port(port=a.port)

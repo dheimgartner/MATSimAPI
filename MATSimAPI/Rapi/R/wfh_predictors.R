@@ -17,7 +17,7 @@ wfh_predictor <- function(data, apollo_list, fix = NULL, cc = NULL, return_vars 
     excl <- c("c", "tau1", "tau2", "tau3", "tau4", "tau5", "s_sigma", "f_sigma")
     est <- est[est %!in% excl]
     v <- stringr::str_remove(est, "^f_|^s_")
-    return(v)
+    return(sort(v))
   }
 
   database <- data
