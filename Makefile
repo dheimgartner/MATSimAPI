@@ -1,4 +1,7 @@
-.PHONY: build, clean
+.PHONY: format, build, clean
+
+format:
+	@black MATSimAPI/
 
 build:
 	@bash scripts/build.sh
