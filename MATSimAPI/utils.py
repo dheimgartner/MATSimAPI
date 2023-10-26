@@ -27,7 +27,7 @@ def from_df(df: pd.DataFrame) -> dict:
     """
     Creates the json data from a pandas.DataFrame as expected by the API
     """
-    return {"data": df.to_json()}
+    return {"data": df.to_dict(orient="list")}
 
 
 if __name__ == "__main__":
