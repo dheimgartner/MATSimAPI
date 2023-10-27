@@ -47,7 +47,7 @@ Documentation
 
 For detailed information and usage examples, refer to the following resources:
 
-- :ref:`Examples` section (also available in the `MATSimAPI/examples` directory).
+- :ref:`examples` section (also available in the ``MATSimAPI/examples`` directory).
 - To understand the required variables, you can use the ``/doc`` endpoint.
 - Example data is included in the package to illustrate the expected format and test the endpoints. You can access this data with Python using the following code:
 
@@ -65,7 +65,7 @@ For detailed information and usage examples, refer to the following resources:
 Remarks
 -------
 
-The core functionality of MATSimAPI is implemented in `R` and is available under `MATSimAPI/Rapi`. This is an `R` package that is installed along with the utility mentioned above. You can start an `R` session and inspect the source code as well as its documentation using the following `R` command:
+The core functionality of ``MATSimAPI`` is implemented in ``R`` and is available under ``MATSimAPI/Rapi``. This is an ``R`` package that is installed along with the utility mentioned above. You can start an ``R`` session and inspect the source code as well as its documentation using the following ``R`` command:
 
 .. code:: R
 
