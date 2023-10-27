@@ -1,5 +1,5 @@
 """
-Could be improved with custom exceptions (?)
+.. Could be improved with custom exceptions (?)
 """
 
 import subprocess

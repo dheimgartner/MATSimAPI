@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 """
-usage: MATSimAPI [-h] [--port PORT] cmd
+::
 
-Entry point to interact with the API
+    usage: MATSimAPI [-h] [--port PORT] cmd
 
-positional arguments:
-  cmd          Command to run {install|uninstall|start|stop}
+    Entry point to interact with the API
 
-options:
-  -h, --help   show this help message and exit
-  --port PORT  Port where the API should run
+    positional arguments:
+        cmd          Command to run {install|uninstall|start|stop}
+
+    options:
+        -h, --help   show this help message and exit
+        --port PORT  Port where the API should run
 """
 
 import argparse
