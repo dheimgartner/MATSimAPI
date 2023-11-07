@@ -17,10 +17,15 @@ wfh_predictor <- function(data, apollo_list, fix = NULL, cc = NULL, return_vars 
     excl <- c("c", "tau1", "tau2", "tau3", "tau4", "tau5", "s_sigma", "f_sigma")
     est <- est[est %!in% excl]
     v <- stringr::str_remove(est, "^f_|^s_")
-    return(sort(v))
+    return(sort(unique(v)))
   }
 
   database <- data
+
+  # These variables are required by the model (but do not influence the prediction)
+  database$wfh_can <- 0
+  database$wfh_n_now <- 0
+  database$FREQMODEL <- 1
 
   # Unpack for apollo_validateInputs
   apollo_fixed <- apollo_inputs$apollo_fixed
