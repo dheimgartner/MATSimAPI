@@ -2,6 +2,12 @@
 
 export("%!in%")
 export("%>%")
+export(apollo_attach)
+export(apollo_avgInterDraws)
+export(apollo_combineModels)
+export(apollo_detach)
+export(apollo_op)
+export(apollo_prepareProb)
 export(base_predictor)
 export(bi_predictor)
 export(ca_predictor)
