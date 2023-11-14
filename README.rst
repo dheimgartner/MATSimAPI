@@ -24,13 +24,13 @@ Usage
 
 After installation, you can use the ``MATSimAPI`` cli for various tasks.
 
-  .. code:: console
+.. code:: console
 
-    # view available commands
-    MATSimAPI -h
+   # view available commands
+   MATSimAPI -h
 
-    # start the API on port 8000 (default port)
-    MATSimAPI start --port 8000
+   # start the API on port 8000 (default port)
+   MATSimAPI start --port 8000
 
 Once the API is running, you can access the Swagger UI at http://localhost:8000/__docs__/.
 
