@@ -21,7 +21,7 @@ weekday_dist <- function(wfh,
   }
 
   out <-
-    MATSimAPI::full_time_week_dist %>%
+    MATSimAPI::weekday_shares %>%
     mutate(wfh_n_now = as.numeric(as.character(wfh_n_now))) %>%
     filter(wfh_n_now == wfh,
            full_time == emp) %>%
